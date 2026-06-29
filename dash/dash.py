@@ -26,7 +26,7 @@ async def start_services(sanic, loop):
                       f'{app.config.POSTGRES_HOST}/'
                       f'{app.config.POSTGRES_NAME}')
 
-    pool = aioredis.ConnectionPool.from_url(f'redis://{app.config.REDIS_ADDRESS}:{app.config.REDIS_PORT}')
+    pool = aioredis.ConnectionPool.from_url(f'redis://:{app.config.REDIS_PASSWORD}@{app.config.REDIS_ADDRESS}:{app.config.REDIS_PORT}')
     app.ctx.redis = aioredis.Redis(connection_pool=pool)
 
 def main(args):
